@@ -1,5 +1,5 @@
 import System.IO
-data Super = Super Int String Float deriving (Show)		
+data Super = Super Int String Float deriving (Show)
 --type Tiposupermercado = [(Codigo,Nombre,Precio)]
 codigo :: Super -> Int
 codigo (Super codigo _ _) = codigo
@@ -31,11 +31,11 @@ hacerFactura1 x [] = ("no existe el producto "++(show x), 0.0)
 hacerFactura1 x (y:supermercado)
 	| x==(codigo y) = tupladoble y
 --	| x/=(codigo y) = hacerFactura1 x supermercado
-	| otherwise = hacerFactura1 x supermercado  
+	| otherwise = hacerFactura1 x supermercado
 
 --enlista las tuplas de productos y precios segun una lista de codigos
 hacerFactura2::[Int]->[Super]->[(String,Float)]
-hacerFactura2 (x:[]) (y:supermercado) =[hacerFactura1 x (y:supermercado)]
+hacerFactura2 (x:[]) (y:supermercString,Float)]ado) =[hacerFactura1 x (y:supermercado)]
 hacerFactura2 (x:xs) (y:supermercado) =[hacerFactura1 x (y:supermercado)] ++ hacerFactura2 xs (y:supermercado)
 
 sumarFactura1::Int->[Super]->Float
@@ -72,4 +72,4 @@ main = do
 --	      y = nombre (Super x y z)
 --	      z = precio (Super x y z)
 
---listaFactura listaCodigo supermercado = map supermercado  
+--listaFactura listaCodigo supermercado = map supermercado
