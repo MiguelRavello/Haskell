@@ -33,7 +33,7 @@ jogo::String->String->Estado->Estado
 jogo [] palabra contenido = contenido
 jogo letra palabra contenido = check (fst contenido) (safeHead letra) palabra (snd contenido)
 
---funciones para el dibujo gallows-helpers 
+--funciones para el dibujo gallows-helpers
 gallows :: (Num a, Ord a) => a -> [Char]
 gallows n = "\n\n       |||========|||\n" ++
             (if n > 0 then "       |||         |\n" else "       |||          \n") ++
@@ -68,7 +68,7 @@ usandoLineas word = go (0, "")
             putStrLn $ gallows misses
             putStrLn $ "Te equivocaste " ++ (show $ misses) ++ " de 7"
             putStrLn $ "Lo q adivinas: " ++ "\x1B[31m" ++ guessed ++ "\x1B[0m"
-            putStrLn $ intersperse ' ' $ mostrar word guessed --se muestra [_ _ _] la palabra a adivinar 
+            putStrLn $ intersperse ' ' $ mostrar word guessed --se muestra [_ _ _] la palabra a adivinar
             putStrLn "Adivina una letra: "
             line <- getLine
             let guess = [safeHead line]
@@ -76,10 +76,10 @@ usandoLineas word = go (0, "")
             if (((fst result) == 7) || '_' `notElem` (mostrar word ((snd result))))
             then (if (fst result) < 7 then return ("Ganaste! la palabra era " ++ word) else return ("Perdiste! la palabra era " ++ word))
             else go result
-	
+
 
 main = do
-	system "reset" 
+	system "reset"
 	handle <- openFile "palabras.txt" ReadMode
 	archivo <- hGetContents handle
 	let xs = words archivo
@@ -92,16 +92,10 @@ main = do
 	if opcion == "y" then main else return ()
 --	putStr "la palabra tiene "
 --	putStr (show (length word))
---	putStrLn " letras" 
+--	putStrLn " letras"
 --	print word
-	--hClose handle 
+	--hClose handle
 
 --mostrar::Char->String->String
 --mostrar u xs =
 --	[if elem u xs then x else '-' | u <-xs]
-
-
-
-
-
-
